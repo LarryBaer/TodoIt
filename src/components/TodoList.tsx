@@ -1,6 +1,6 @@
 import React from 'react';
 
-//Import components
+// Import components
 import Todo from './Todo';
 
 interface TodoListProps{

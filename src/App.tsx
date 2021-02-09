@@ -1,30 +1,25 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 
-//Import components
+// Import components
 import Form from './components/Form';
 import TodoList from "./components/TodoList";
 
-
-// interface Some{
-//   setTodos: any;
-// }
 function App() {
   const [inputText, setInputText] = useState("");
   const [status, setStatus] = useState('all');
   const [filteredTodos, setFilteredTodos] = useState([]);
   const [todos, setTodos] = useState([]);
 
-
-  //run once when program starts
+  // Runs once when program starts
   useEffect(() => {
     getLocalTodos();
   }, []);
 
-    useEffect(() => {
+  useEffect(() => {
       filterHandler();
       saveLocalTodos();
-    }, [todos, status]);
+  }, [todos, status]);
 
   function filterHandler(){
     switch(status){
@@ -40,19 +35,18 @@ function App() {
     }
   }
 
-
-    function saveLocalTodos(){
+  function saveLocalTodos(){
         localStorage.setItem("todos", JSON.stringify(todos));
-    }
+  }
 
-    function getLocalTodos(){
+  function getLocalTodos(){
       if(localStorage.getItem("todos") === null){
         localStorage.setItem("todos", JSON.stringify([]));
       }else{
         let todoLocal: any = JSON.parse(localStorage.getItem("todos")!);
         setTodos(todoLocal);
       }
-    }
+  }
   
   return (
     <div className="App">
@@ -74,6 +68,5 @@ function App() {
     </div>
   );
   }
-
 
 export default App;

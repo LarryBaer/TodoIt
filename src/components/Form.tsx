@@ -17,7 +17,6 @@ function Form({setInputText, todos, setTodos, inputText, setStatus}: FormProps){
     function submitTodoHandler(e: any){
         e.preventDefault();
         setTodos([...todos, {text: inputText, completed: false, id: uuidv4()}])
-        console.log([...todos]);
         setInputText("");
     }
 
