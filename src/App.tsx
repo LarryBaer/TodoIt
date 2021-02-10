@@ -1,9 +1,10 @@
-import './App.css';
+// import './App.css';
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
 
-// Import components
-import Form from './components/Form';
-import TodoList from "./components/TodoList";
+// Import pages
+import LogIn from "./Pages/login";
+import Home from './Pages/home';
 
 function App() {
   const [inputText, setInputText] = useState("");
@@ -49,23 +50,17 @@ function App() {
   }
   
   return (
-    <div className="App">
-      <header>
-        <h1>TodoIt</h1>
-      </header>
-      <Form 
-      setStatus={setStatus} 
-      todos={todos} 
-      setTodos={setTodos} 
-      setInputText={setInputText} 
-      inputText={inputText}/>
+    
+    <BrowserRouter>
+      <div className="App">
+          <Switch>
+           <Route path="/login" exact component={LogIn}/>
+           <Route path="/home" exact component={Home}/>
+           <Route path="/" render={() => <div>404</div>}></Route>
+          </Switch>
 
-      <TodoList 
-      filteredTodos={filteredTodos} 
-      setTodos={setTodos} 
-      text={inputText} 
-      todos={todos}/>
-    </div>
+      </div>
+    </BrowserRouter>
   );
   }
 
