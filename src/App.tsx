@@ -1,6 +1,5 @@
-// import './App.css';
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // Import pages
 import LogIn from "./Pages/login";
@@ -58,7 +57,6 @@ function App() {
            <Route path="/home" exact component={Home}/>
            <Route path="/" render={() => <div>404</div>}></Route>
           </Switch>
-
       </div>
     </BrowserRouter>
   );

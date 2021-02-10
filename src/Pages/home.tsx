@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../App.css';
+import classes from '../css/test.css';
 
 // Import components
 import Form from '../components/Form';
@@ -12,7 +12,7 @@ function Home(){
     const [todos, setTodos] = useState([]);
     return(
         <div>
-            <header>
+            <header className="test_item">
                <h1>TodoIt</h1>
             </header>
 
