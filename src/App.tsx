@@ -1,55 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import firebase from "firebase";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
 // Import pages
 import LogIn from "./Pages/login";
 import Home from './Pages/home';
 
 function App() {
-  const [inputText, setInputText] = useState("");
-  const [status, setStatus] = useState('all');
-  const [filteredTodos, setFilteredTodos] = useState([]);
-  const [todos, setTodos] = useState([]);
 
-  // Runs once when program starts
-  useEffect(() => {
-    getLocalTodos();
-  }, []);
+//If user is not logged in, send to login page, otherwise send to home
+const [loggedIn, setLoggedIn] = useState(false);
 
-  useEffect(() => {
-      filterHandler();
-      saveLocalTodos();
-  }, [todos, status]);
-
-  function filterHandler(){
-    switch(status){
-      case 'completed':
-        setFilteredTodos(todos.filter((todo: any) => todo.completed === true));
-        break;
-      case 'uncompleted':
-        setFilteredTodos(todos.filter((todo: any) => todo.completed === false));
-        break;
-      default:
-        setFilteredTodos(todos);
-        break;
-    }
-  }
-
-  function saveLocalTodos(){
-        localStorage.setItem("todos", JSON.stringify(todos));
-  }
-
-  function getLocalTodos(){
-      if(localStorage.getItem("todos") === null){
-        localStorage.setItem("todos", JSON.stringify([]));
-      }else{
-        let todoLocal: any = JSON.parse(localStorage.getItem("todos")!);
-        setTodos(todoLocal);
-      }
-  }
-  
   return (
-    
     <BrowserRouter>
       <div className="App">
           <Switch>
