@@ -1,13 +1,5 @@
-.test_item {
-  background-color: blue;
-}
-
-.grid_item1 {
-  /* background-color:red; */
-}
-
-.grid_item2 {
-  /* background-color:yellow; */
+.test {
+  background-color: red;
 }
 
 .login_main_grid {
@@ -15,7 +7,12 @@
   height: 100vh;
 }
 
+.grid_item {
+  background-color: red;
+}
+
 .google_login_button {
+  color: green;
 }
 
 .welcome_header {
