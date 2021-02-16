@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import loginStyles from "../css/login.module.css";
 import mainImage from "../images/login_main_image.jpg";
 import { Grid, TextField } from "@material-ui/core";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import  Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
+import "firebaseui/dist/firebaseui.css";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 firebase.initializeApp({
   apiKey: "AIzaSyCbK5UFeg5DOdQkHH0M8sJCXBA9ZthPO88",
@@ -19,6 +21,8 @@ function LogIn() {
       signInSuccess: () => false,
     },
   };
+
+
 
   return (
     <div className={loginStyles.login_main}>

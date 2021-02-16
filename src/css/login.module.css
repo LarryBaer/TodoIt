@@ -8,16 +8,18 @@
 }
 
 .grid_item {
-  background-color: red;
-}
-
-.google_login_button {
-  color: green;
+  /* background-color: red; */
+  padding: 10px;
 }
 
 .welcome_header {
   display: inline;
+  font-size: 50px;
 }
+
+/* .login_btn{
+  background-color: "#005468";
+} */
 
 .header_brand_word {
   color: #00b9be;
@@ -33,3 +35,7 @@
   color: #00b9be;
   font-weight: bold;
 }
+
+/* .google_login_button{
+  justify-content: flex-start;
+} */
