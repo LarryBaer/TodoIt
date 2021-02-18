@@ -22,8 +22,6 @@ function LogIn() {
     },
   };
 
-
-
   return (
     <div className={loginStyles.login_main}>
       <Grid

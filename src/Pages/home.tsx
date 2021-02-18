@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from "react";
-// import homeStyles from '../css/home.module.css';
+import Button from "@material-ui/core/Button";
+import firebase from "firebase";
 
 // Import components
 import Form from "../components/Form";
 import TodoList from "../components/TodoList";
 
-function Home() {
+interface HomeProps {
+  loggedIn: any;
+  setLoggedIn: any;
+}
+
+function Home({ loggedIn, setLoggedIn }: HomeProps) {
   const [inputText, setInputText] = useState("");
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
   const [todos, setTodos] = useState([]);
+
+  function test() {
+    firebase.auth().signOut();
+    setLoggedIn(false);
+  }
 
   // Runs once when program starts
   useEffect(() => {
@@ -68,6 +79,10 @@ function Home() {
         text={inputText}
         todos={todos}
       />
+
+      <Button onClick={test} variant="contained" color="primary">
+        Log Out
+      </Button>
     </div>
   );
 }
