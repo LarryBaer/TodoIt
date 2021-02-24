@@ -6,7 +6,7 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import Button from "@material-ui/core/Button";
 import "firebaseui/dist/firebaseui.css";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+// import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 firebase.initializeApp({
   apiKey: "AIzaSyCbK5UFeg5DOdQkHH0M8sJCXBA9ZthPO88",

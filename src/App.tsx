@@ -22,7 +22,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
           <Route path="/login" exact component={LogIn} />
-          <Route path="/home" exact render={(props) => <Home {...props} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
+          <Route path="/home" exact render={(props) => <Home {...props} setLoggedIn={setLoggedIn}/>} />
           <Route
             path="/"
             render={() =>
