@@ -21,19 +21,17 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-          <Route path="/login" exact component={LogIn} />
           <Route path="/home" exact render={(props) => <Home {...props} setLoggedIn={setLoggedIn}/>} />
+          <Route path="/login" exact component={LogIn} />
           <Route
             path="/"
             render={() =>
-              loggedIn ? <Redirect to="/home" /> : <Redirect to="/login" />
+              loggedIn ?  <Redirect to="/home" /> : <Redirect to="/login" />
             }
           ></Route>
       </div>
     </BrowserRouter>
-  );
-
-  
+  ); 
 }
 
 export default App;

@@ -8,20 +8,31 @@ import {
   List,
   Typography,
   ListItem,
-  ListItemText,
   Card,
   CardContent,
-  Button,
   createStyles,
   Theme,
   makeStyles,
+  IconButton,
 } from "@material-ui/core";
+
+// Import Icons
+import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
+import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
+import AssessmentIcon from "@material-ui/icons/Assessment";
+import HomeIcon from "@material-ui/icons/Home";
+import ListAltIcon from "@material-ui/icons/ListAlt";
+import TodayIcon from "@material-ui/icons/Today";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+
+// Import Components
+import ListCard from "./ListCard";
 
 interface HomeProps {
   setLoggedIn: any;
 }
 
-const drawerWidth = 240;
+const drawerWidth = 100;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -54,18 +65,22 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     logout_btn: {
       position: "fixed",
-      width: 240,
       bottom: 0,
+    },
+    greeting_text: {
+      fontSize: 30,
     },
   })
 );
 
 function Navigation({ setLoggedIn }: HomeProps) {
   const classes = useStyles();
+
   function signOut() {
     firebase.auth().signOut();
     setLoggedIn(false);
   }
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -74,6 +89,7 @@ function Navigation({ setLoggedIn }: HomeProps) {
           <Typography variant="h6" noWrap>
             TodoIt
           </Typography>
+          {/* <AccountCircleOutlinedIcon /> */}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -86,44 +102,46 @@ function Navigation({ setLoggedIn }: HomeProps) {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            {["Home", "My Lists", "Calendar", "Statistics"].map(
-              (text, index) => (
-                <ListItem button key={text}>
-                  <ListItemText primary={text} />
-                </ListItem>
-              )
-            )}
-          </List>
-          <List>
-            <ListItem button className={classes.logout_btn} onClick={signOut}>
-              <ListItemText>Log Out</ListItemText>
+            <ListItem>
+              <IconButton>
+                <HomeIcon fontSize="large" />
+              </IconButton>
+            </ListItem>
+            <ListItem>
+              <IconButton>
+                <ListAltIcon fontSize="large" />
+              </IconButton>
+            </ListItem>
+            <ListItem>
+              <IconButton>
+                <TodayIcon fontSize="large" />
+              </IconButton>
+            </ListItem>
+            <ListItem>
+              <IconButton>
+                <AssessmentIcon fontSize="large" />
+              </IconButton>
+            </ListItem>
+            <ListItem className={classes.logout_btn}>
+              <IconButton onClick={signOut}>
+                <ExitToAppIcon fontSize="large" />
+              </IconButton>
             </ListItem>
           </List>
         </div>
       </Drawer>
       <main className={classes.content}>
         <Toolbar />
-        <Card className={classes.project_card}>
-          <CardContent>
-            <Typography color="textSecondary" gutterBottom>
-              List 1
-            </Typography>
-          </CardContent>
-        </Card>
-        <Card className={classes.project_card}>
-          <CardContent>
-            <Typography color="textSecondary" gutterBottom>
-              List 2
-            </Typography>
-          </CardContent>
-        </Card>
-        <Card className={classes.project_card}>
-          <CardContent>
-            <Typography color="textSecondary" gutterBottom>
-              List 3
-            </Typography>
-          </CardContent>
-        </Card>
+        <Typography
+          className={classes.greeting_text}
+          color="textSecondary"
+          gutterBottom
+        >
+          Good afternoon, Larry
+        </Typography>
+        <ListCard />
+        <ListCard />
+        <ListCard />
       </main>
     </div>
   );
