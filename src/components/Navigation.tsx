@@ -15,7 +15,6 @@ import {
   makeStyles,
   IconButton,
 } from "@material-ui/core";
-
 // Import Icons
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
@@ -24,9 +23,6 @@ import HomeIcon from "@material-ui/icons/Home";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import TodayIcon from "@material-ui/icons/Today";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-
-// Import Components
-import ListCard from "./ListCard";
 
 interface HomeProps {
   setLoggedIn: any;
@@ -67,13 +63,11 @@ const useStyles = makeStyles((theme: Theme) =>
       position: "fixed",
       bottom: 0,
     },
-    greeting_text: {
-      fontSize: 30,
-    },
   })
 );
 
 function Navigation({ setLoggedIn }: HomeProps) {
+
   const classes = useStyles();
 
   function signOut() {
@@ -132,16 +126,6 @@ function Navigation({ setLoggedIn }: HomeProps) {
       </Drawer>
       <main className={classes.content}>
         <Toolbar />
-        <Typography
-          className={classes.greeting_text}
-          color="textSecondary"
-          gutterBottom
-        >
-          Good afternoon, Larry
-        </Typography>
-        <ListCard />
-        <ListCard />
-        <ListCard />
       </main>
     </div>
   );
