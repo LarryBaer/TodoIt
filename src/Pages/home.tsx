@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import firebase from "firebase";
+
 // Import components
 import Form from "../components/Form";
 import TodoList from "../components/TodoList";
@@ -16,7 +17,9 @@ const useStyles = makeStyles((theme: Theme) =>
     home_body: {
       paddingLeft: 140,
     },
-    home: {},
+    home: {
+      marginTop: 40,
+    },
     greeting_container: {},
     date_container: {
       fontSize: ".7em",

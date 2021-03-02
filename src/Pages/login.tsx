@@ -1,12 +1,43 @@
-import React, { useState, useEffect } from "react";
-import loginStyles from "../css/login.module.css";
+import React from "react";
 import mainImage from "../images/login_main_image.jpg";
 import { Grid, TextField } from "@material-ui/core";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import Button from "@material-ui/core/Button";
 import "firebaseui/dist/firebaseui.css";
-// import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+
+import { createStyles, Theme, makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    login_main_grid: {
+      height: 100,
+    },
+    grid_item: {
+      padding: 10,
+    },
+    welcome_header: {
+      display: "inline",
+      fontSize: 50,
+    },
+    header_brand_word: {
+      color: "#00b9be",
+    },
+    main_logo_image: {
+      maxWidth: "100%",
+    },
+    signin_word: {
+      color: "00b9be",
+      fontWeight: "bold",
+    },
+    login_main: {},
+    grid_welcome_header: {},
+    google_login_button: {},
+    email_input: {},
+    password_input: {},
+    test: {},
+  })
+);
 
 firebase.initializeApp({
   apiKey: "AIzaSyCbK5UFeg5DOdQkHH0M8sJCXBA9ZthPO88",
@@ -14,6 +45,9 @@ firebase.initializeApp({
 });
 
 function LogIn() {
+  const classes = useStyles();
+
+  // Config for logging in
   var uiConfig: any = {
     signInFlow: "popup",
     signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
@@ -23,55 +57,55 @@ function LogIn() {
   };
 
   return (
-    <div className={loginStyles.login_main}>
+    <div className={classes.login_main}>
       <Grid
         container
-        className={loginStyles.login_main_grid}
+        className={classes.login_main_grid}
         justify="center"
         alignItems="center"
       >
-        <Grid item className={loginStyles.grid_item + loginStyles.test} lg={8}>
-          <img className={loginStyles.main_logo_image} src={mainImage}></img>
+        <Grid item className={classes.grid_item + classes.test} lg={8}>
+          <img className={classes.main_logo_image} src={mainImage}></img>
         </Grid>
-        <Grid item className={loginStyles.grid_item} lg={4}>
-          <Grid item className={loginStyles.grid_welcome_header}>
-            <h1 className={loginStyles.welcome_header}>
+        <Grid item className={classes.grid_item} lg={4}>
+          <Grid item className={classes.grid_welcome_header}>
+            <h1 className={classes.welcome_header}>
               Welcome to
-              <span className={loginStyles.header_brand_word}> TodoIt</span>
+              <span className={classes.header_brand_word}> TodoIt</span>
             </h1>
           </Grid>
-          <Grid item className={loginStyles.google_login_button}>
+          <Grid item className={classes.google_login_button}>
             <StyledFirebaseAuth
-              className={loginStyles.google_login_button}
+              className={classes.google_login_button}
               uiConfig={uiConfig}
               firebaseAuth={firebase.auth()}
             />
           </Grid>
-          <Grid item className={loginStyles.grid_item}>
+          <Grid item className={classes.grid_item}>
             <TextField
-              className={loginStyles.email_input}
+              className={classes.email_input}
               id="outlined-basic"
               label="Email"
               variant="outlined"
             />
           </Grid>
-          <Grid item className={loginStyles.grid_item}>
+          <Grid item className={classes.grid_item}>
             <TextField
-              className={loginStyles.password_input}
+              className={classes.password_input}
               id="outlined-basic"
               label="Password"
               variant="outlined"
             />
           </Grid>
-          <Grid item className={loginStyles.grid_item}>
+          <Grid item className={classes.grid_item}>
             <Button variant="contained" color="primary">
               Log In
             </Button>
           </Grid>
-          <Grid item className={loginStyles.grid_item}>
+          <Grid item className={classes.grid_item}>
             <p>
               Or if you already have an account,{" "}
-              <span className={loginStyles.signin_word}>sign in</span>
+              <span className={classes.signin_word}>sign in</span>
             </p>
           </Grid>
         </Grid>

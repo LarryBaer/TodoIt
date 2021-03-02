@@ -2,19 +2,16 @@ import React from "react";
 import firebase from "firebase";
 import {
   Drawer,
-  AppBar,
   CssBaseline,
   Toolbar,
   List,
-  Typography,
   ListItem,
   createStyles,
   Theme,
   makeStyles,
   IconButton,
-  Input,
-  TextField,
 } from "@material-ui/core";
+
 // Import Icons
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import HomeIcon from "@material-ui/icons/Home";
@@ -33,10 +30,6 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       display: "flex",
     },
-    appBar: {
-      zIndex: theme.zIndex.drawer + 1,
-      background: "#00b9be",
-    },
     drawer: {
       width: drawerWidth,
       flexShrink: 0,
@@ -46,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     drawerContainer: {
       overflow: "auto",
-      marginTop:60,
+      marginTop: 60,
     },
     content: {
       flexGrow: 1,
@@ -60,7 +53,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function SideNavBar({ setLoggedIn }: HomeProps) {
-
   const classes = useStyles();
 
   function signOut() {
@@ -109,7 +101,6 @@ function SideNavBar({ setLoggedIn }: HomeProps) {
         </div>
       </Drawer>
       <main className={classes.content}>
-        <Toolbar />
       </main>
     </div>
   );
