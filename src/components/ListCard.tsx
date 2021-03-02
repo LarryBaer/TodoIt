@@ -21,7 +21,9 @@ import {
     project_card: {
       width: 200,
       height: 200,
-      margin: 50,
+      marginRight:20,
+      marginTop:20,
+      marginBottom:20,
       display: "inline-flex",
     },
   })

@@ -8,16 +8,14 @@ import {
   List,
   Typography,
   ListItem,
-  Card,
-  CardContent,
   createStyles,
   Theme,
   makeStyles,
   IconButton,
+  Input,
+  TextField,
 } from "@material-ui/core";
 // Import Icons
-import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
-import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import HomeIcon from "@material-ui/icons/Home";
 import ListAltIcon from "@material-ui/icons/ListAlt";
@@ -48,16 +46,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     drawerContainer: {
       overflow: "auto",
+      marginTop:60,
     },
     content: {
       flexGrow: 1,
       padding: theme.spacing(3),
-    },
-    project_card: {
-      width: 200,
-      height: 200,
-      margin: 50,
-      display: "inline-flex",
     },
     logout_btn: {
       position: "fixed",
@@ -66,7 +59,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-function Navigation({ setLoggedIn }: HomeProps) {
+function SideNavBar({ setLoggedIn }: HomeProps) {
 
   const classes = useStyles();
 
@@ -78,14 +71,6 @@ function Navigation({ setLoggedIn }: HomeProps) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" noWrap>
-            TodoIt
-          </Typography>
-          {/* <AccountCircleOutlinedIcon /> */}
-        </Toolbar>
-      </AppBar>
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -93,7 +78,6 @@ function Navigation({ setLoggedIn }: HomeProps) {
           paper: classes.drawerPaper,
         }}
       >
-        <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
             <ListItem>
@@ -131,4 +115,4 @@ function Navigation({ setLoggedIn }: HomeProps) {
   );
 }
 
-export default Navigation;
+export default SideNavBar;

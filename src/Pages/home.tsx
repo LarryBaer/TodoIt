@@ -3,7 +3,8 @@ import firebase from "firebase";
 // Import components
 import Form from "../components/Form";
 import TodoList from "../components/TodoList";
-import Navigation from "../components/Navigation";
+import NavBar from "../components/NavBar";
+import SideNavBar from "../components/SideNavBar";
 import ListCard from "../components/ListCard";
 import { Typography, createStyles, Theme, makeStyles } from "@material-ui/core";
 
@@ -11,10 +12,14 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     greeting_text: {
       fontSize: 30,
-      marginLeft: 50,
     },
     home_body: {
-      marginLeft: 100,
+      paddingLeft: 140,
+    },
+    home: {},
+    greeting_container: {},
+    date_container: {
+      fontSize: ".7em",
     },
   })
 );
@@ -26,18 +31,26 @@ interface HomeProps {
 function Home({ setLoggedIn }: HomeProps) {
   const classes = useStyles();
 
+  // Used for setting name in greeting
   var user = firebase.auth().currentUser;
   var accountName;
   var greetingText;
 
+  // Set todays date
+  let today = new Date();
+  let hour = today.getHours();
+  let year = today.getFullYear();
+  let month = today.getMonth() + 1;
+  let day = today.getDate();
+  let date = month + "/" + day + "/" + year;
+
+  // If a user is logged in, set their username
   if (user != null) {
     accountName = user.displayName;
   }
 
+  // Set greeting depending on time of day
   function setGreeting() {
-    let today = new Date();
-    let hour = today.getHours();
-
     if (hour < 12) {
       greetingText = "Good Morning, ";
     } else if (hour < 18) {
@@ -50,20 +63,25 @@ function Home({ setLoggedIn }: HomeProps) {
   setGreeting();
 
   return (
-    <div className={classes.home_body}>
-      <Navigation setLoggedIn={setLoggedIn} />
-      <Typography
-        className={classes.greeting_text}
-        color="textSecondary"
-        gutterBottom
-      >
-        {greetingText}
-        {accountName}
-      </Typography>
-      <ListCard />
-      <ListCard />
-      <ListCard />
-      {/* <Form
+    <div className={classes.home}>
+      <NavBar />
+      <SideNavBar setLoggedIn={setLoggedIn} />
+      <div className={classes.home_body}>
+        <div className={classes.greeting_container}>
+          <Typography
+            className={classes.greeting_text}
+            color="textSecondary"
+            gutterBottom
+          >
+            {greetingText}
+            {accountName}
+            <div className={classes.date_container}>{date}</div>
+          </Typography>
+        </div>
+        <ListCard />
+        <ListCard />
+        <ListCard />
+        {/* <Form
         setStatus={setStatus}
         todos={todos}
         setTodos={setTodos}
@@ -77,6 +95,7 @@ function Home({ setLoggedIn }: HomeProps) {
         text={inputText}
         todos={todos}
       /> */}
+      </div>
     </div>
   );
 }
